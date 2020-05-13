@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<style>
+form {
+    margin: auto;
+    width: 35%;
+}
+
+.result {
+    margin: auto;
+    width: 35%;
+    border: 1px solid #ccc;
+}
+</style>
+
+<head>
+    <title>Insurance Premium Prediction Model</title>
+</head>
+<form action="{{ url_for('main') }}" method="POST">
+    <fieldset>
+        <legend>Fill in your details:</legend>
+
+        <label for="age">Age:</label>
+    <input id="age" name="age" type="number" required>
+    <br>
+    <br>
+    <label for="sex">Sex:</label>
+    <input type="radio" id="sex" name="sex" value="1" required> Male
+    <input type="radio" id="sex" name="sex" value="0" required> Female
+    <br>
+    <br>
+    <label for="bmi">BMI:</label>
+    <input id="bmi" name="bmi" type="number" required>
+    <br>
+    <br>
+    <label for="children">Number of children:</label>
+    <input id="children" name="children" type="number" required>
+    <br>
+    <br>
+    <label for="smoker">Are you a smoker?:</label>
+    <input type="radio" id="smoker" name="smoker" value="1" required> Yes
+    <input type="radio" id="smoker" name="smoker" value="0" required> No 
+    <br>
+    <br>
+    <label for="region">Region:</label>
+    <select id="region" name="region">
+    <option value="1">South-west</option>
+    <option value="2">South-east</option>
+    <option value="3">North-west</option>
+    <option value="4">North-east</option>
+  </select>
+  <br>
+  <br>
+   <div style="text-align:center">  
+    <input type="submit" value="go" />  
+</div>
+    </fieldset>
+</form>
+<br>
+<div class="result" align="center">
+    {% if result %}
+    	{% for variable, value in original_input.items() %}
+    		<b>{{ variable }}</b> : {{ value }}
+    	{% endfor %}
+		<br>
+    	<br> Predicted insurance premium:
+   		<p style="font-size:50px">{{ result }}</p>
+    {% endif %}
+</div>
+
+</html>

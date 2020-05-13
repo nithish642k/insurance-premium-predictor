@@ -1,0 +1,5 @@
+sklearn
+flask
+gunicorn
+xgboost
+pandas
